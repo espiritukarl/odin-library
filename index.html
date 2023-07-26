@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <h1>Mini Library</h1>
+        <h4>This is a project under <a href="http://theodinproject.com">The Odin Project</a>. The library is made using HTML, CSS, and JavaScript. In Particular, the project is to teach Objects for JavaScript.</h4>
+    </nav>
+    <main>
+        <section>
+            <ul class="display">
+                <table cellspacing="0" cellpadding="0">
+                    <thead id="table-header">
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Pages</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </ul>
+            <div class="button__display">
+                <button class="button-17" id="myBtn">+</button>
+                <button class="button-17" onclick="deleteLibrary()">Delete All</button>
+            </div>
+        </section>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form action="" onsubmit=mainLibrary(event) id="BookForm">
+                    <fieldset>
+                        <label for="book-title">Title: <input type="text" name="book-title" id="book-title"> </label>
+                        <label for="book-author">Author: <input type="text" name="book-author" id="book-author"> </label>
+                        <label for="book-pages">Pages amount: <input type="number" name="book-pages" id="book-pages"> </label>
+                        <label for="book-completed">Read? <input type="checkbox" name="book-completed" id="book-completed"> </label>
+                    </fieldset>
+                    <button class="button-17">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+</body>
+<script src="script.js"></script>
+</html>
