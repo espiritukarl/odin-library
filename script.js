@@ -78,7 +78,10 @@ function validateForm() {
   if (bpages.validity.valueMissing) {
     spanError[2].textContent = "Please enter amount of pages" 
   }
-  let val = btitle.validity.valueMissing || bauthor.validity.valueMissing || bpages.validity.valueMissing
+  if (bpages.validity.rangeUnderflow || bpages.validity.rangeOverflow) {
+    spanError[2].textContent = "Please enter amount of pages that range from 1 to 10000" 
+  }
+  let val = btitle.validity.valueMissing || bauthor.validity.valueMissing || bpages.validity.valueMissing || bpages.validity.rangeUnderflow || bpages.validity.rangeOverflow
   if (val) bookForm.classList.add("submitted")
   return val
 }
