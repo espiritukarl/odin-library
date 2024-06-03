@@ -36,11 +36,14 @@
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <form action="" onsubmit=mainLibrary(event) id="BookForm">
+                <form action="" onsubmit=mainLibrary(event) id="BookForm" novalidate>
                     <fieldset>
-                        <label for="book-title">Title: <input type="text" name="book-title" id="book-title"> </label>
-                        <label for="book-author">Author: <input type="text" name="book-author" id="book-author"> </label>
-                        <label for="book-pages">Pages amount: <input type="number" name="book-pages" id="book-pages"> </label>
+                        <label for="book-title">Title: <input type="text" name="book-title" id="book-title" required> </label>
+                        <span class="error" aria-live="polite"></span>
+                        <label for="book-author">Author: <input type="text" name="book-author" id="book-author" required> </label>
+                        <span class="error" aria-live="polite"></span>
+                        <label for="book-pages">Pages amount: <input type="number" name="book-pages" id="book-pages" min="1" max="10000" required> </label>
+                        <span class="error" aria-live="polite"></span>
                         <label for="book-completed">Read? <input type="checkbox" name="book-completed" id="book-completed"> </label>
                     </fieldset>
                     <button class="button-17">Submit</button>

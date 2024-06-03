@@ -18,7 +18,7 @@
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 40%; /* Could be more or less, depending on screen size */
   }
   
   /* The Close Button */
@@ -27,6 +27,7 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    padding-left: 10px;
   }
   
 .close:hover,
@@ -70,6 +71,7 @@
   width: auto;
   will-change: transform,opacity;
   z-index: 0;
+  margin-top: 10px;
 }
 
 .button-17:hover {
@@ -190,11 +192,11 @@ fieldset {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding: 10px;
+  padding: 20px;
   font-family: 'Karla', sans-serif;
 }
 
-fieldset input[type="text"], fieldset input[type="number"] {
+fieldset input[type="text"] {
   min-width: 100%;
   padding: 5px;
   box-sizing: border-box;
@@ -208,4 +210,40 @@ fieldset input[type="checkbox"] {
 
 fieldset label {
   font-weight: bold;
+}
+
+#book-pages {
+  height: 20px;
+  max-width: 40px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+form.submitted input:invalid, input.invalid {
+  border-color: #900;
+  background-color: #fdd;
+}
+
+input:focus:invalid {
+  border: none;
+}
+
+.error {
+  width: 100%;
+  padding: 0;
+  font-size: 80%;
+  color: rgb(145, 70, 70);
+  background-color: white;
+  border-radius: 0 0 5px 5px;
+  box-sizing: border-box;
+  margin-left: 5px;
+  font-style: italic;
+}
+
+.error.active {
+  padding: 0.3em;
 }

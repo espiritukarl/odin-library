@@ -26,6 +26,11 @@ window.onclick = function(event) {
 // -----------------------------------------------------------------------
 
 const tbody = document.getElementsByTagName("tbody")[0]
+const btitle = document.getElementById("book-title")
+const bauthor = document.getElementById("book-author")
+const bpages = document.getElementById("book-pages")
+const bookForm = document.getElementById("BookForm")
+const spanError = document.getElementsByClassName("error")
 
 let myLibrary = [
   new Book("A Game of Thrones", "George R.R. Martin", 694, false),
@@ -41,6 +46,7 @@ function Book(title, author, pages, read) {
 
 function mainLibrary(event) {
   event.preventDefault()
+  clearError();
   addBookToLibrary();
   clearLibrary()
   displayLibrary();
@@ -50,15 +56,42 @@ function addBookToLibrary() {
   let form = document.forms.BookForm
   let data = new FormData(form)
   let newBook = new Book(data.get('book-title'), data.get('book-author'), data.get('book-pages'), data.get('book-completed'))
-  if (myLibrary.some((book) => (book.title === newBook.title) && (book.author === newBook.author))) {
-    alert("Book is already in the library")
-  } else {
-    myLibrary.push(newBook)
-  }
 
-  // Close the Modal when you submit, and then reset the input
-  modal.style.display = "none";
-  form.reset()
+  if (myLibrary.some((book) => (book.title === newBook.title) && (book.author === newBook.author))) {
+    spanError[0].textContent = "Book is already in library"
+    btitle.classList.add("invalid")
+  } else if (!validateForm()) {
+    myLibrary.push(newBook)
+    // Close the Modal when you submit, and then reset the input
+    modal.style.display = "none";
+    form.reset()
+  }
+}
+
+function validateForm() {
+  if (btitle.validity.valueMissing) {
+    spanError[0].textContent = "Please enter a book title"
+  }
+  if (bauthor.validity.valueMissing) {
+    spanError[1].textContent = "Please enter a book author"
+  }
+  if (bpages.validity.valueMissing) {
+    spanError[2].textContent = "Please enter amount of pages" 
+  }
+  let val = btitle.validity.valueMissing || bauthor.validity.valueMissing || bpages.validity.valueMissing
+  if (val) bookForm.classList.add("submitted")
+  return val
+}
+
+function clearError() {
+  Array.from(spanError).forEach(el => el.textContent = "");
+  Array.from(spanError).forEach(el => {
+    if (el.classList.contains("active")) {
+      el.classList.remove("active")
+    }
+  });
+  if (btitle.classList.contains("submitted")) btitle.remove.classList("invalid")
+  bookForm.classList.remove("submitted")
 }
 
 function displayLibrary() {
