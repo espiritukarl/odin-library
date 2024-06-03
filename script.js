@@ -29,7 +29,7 @@ const tbody = document.getElementsByTagName("tbody")[0]
 
 let myLibrary = [
   new Book("A Game of Thrones", "George R.R. Martin", 694, false),
-  new Book("Harry Potter and the Goblet of Fire", "J.K. Rowlinbg", 752, true)
+  new Book("Harry Potter and the Goblet of Fire", "J.K. Rowling", 752, true)
 ];
 
 function Book(title, author, pages, read) {
@@ -50,7 +50,7 @@ function addBookToLibrary() {
   let form = document.forms.BookForm
   let data = new FormData(form)
   let newBook = new Book(data.get('book-title'), data.get('book-author'), data.get('book-pages'), data.get('book-completed'))
-  if (myLibrary.some(book => book.title === newBook.title) && myLibrary.some(book => book.author === newBook.author)) {
+  if (myLibrary.some((book) => (book.title === newBook.title) && (book.author === newBook.author))) {
     alert("Book is already in the library")
   } else {
     myLibrary.push(newBook)
